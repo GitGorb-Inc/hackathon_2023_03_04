@@ -1,4 +1,5 @@
 import customtkinter
+import tkinter
 from sys import platform
 from PIL import Image
 
@@ -21,12 +22,16 @@ class BeFriend(customtkinter.CTk):
         # self.iconbitmap("/resources/file.ico")
 
         # widgets
-        self.button = customtkinter.CTkButton(master=self, command=self.button_callback)
-        self.button.pack(padx=20, pady=20)
+        self.button = customtkinter.CTkButton(master=self, text="CLI", command=self.button_callback)
+
+        # geometry
+        self.button.place(x=0, y=0)
 
     # widget methods
     def button_callback(self):
-        print("button pressed")
+        dialog = customtkinter.CTkInputDialog(text="Enter command", title="Development Console")
+        cmd = dialog.get_input()
+        print(cmd)
 
 def main():
     return BeFriend()
