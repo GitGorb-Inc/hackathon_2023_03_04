@@ -1,0 +1,17 @@
+a0001:
+  category: 'visit'
+  name: 'Odwiedź Rynek Główny w Krakowie.'
+  overallProgress: 1
+  currentProgress: 0
+
+a0002:
+  category: 'people'
+  name: 'Spotkaj 10 osób'
+  overallProgress: 10
+  currentProgress: 0
+
+a0003:
+  category: 'people'
+  name: 'Napisz do 5 osób'
+  overallProgress: 5
+  currentProgress: 0
