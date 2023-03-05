@@ -1,3 +1,4 @@
+// first color is lightmode, second is darkmode
 {
   "CTk": {
     "fg_color": ["gray95", "gray10"]
