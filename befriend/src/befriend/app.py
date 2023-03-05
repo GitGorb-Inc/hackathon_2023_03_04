@@ -5,11 +5,12 @@ from PIL import Image
 
 customtkinter.set_default_color_theme("befriend_theme.json")
 
-if platform == "linux" or platform == "linux2":
-    customtkinter.set_appearance_mode("dark")
-else:
-    customtkinter.set_appearance_mode("system")
+# if platform == "linux" or platform == "linux2":
+#     customtkinter.set_appearance_mode("dark")
+# else:
+#     customtkinter.set_appearance_mode("system")
 
+customtkinter.set_appearance_mode("light")
 customtkinter.set_widget_scaling(1)  # widget dimensions and text size
 customtkinter.set_window_scaling(0.6)  # window geometry dimensions
 
