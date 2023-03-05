@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.12
+Name: friendr
+Formal-Name: Friendr
+App-ID: com.miksiuk.friendr.friendr
+Version: 0.0.1
+Home-page: https://friendr.miksiuk.com/
+Download-URL: https://friendr.miksiuk.com/
+Author: GitGorb Inc.
+Author-email: friendr.support@miksiuk.com
+Summary: Simple friend finder
