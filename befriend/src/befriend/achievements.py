@@ -1,4 +1,3 @@
-from tkinter import N
 import yaml
 
 class Achievement:
@@ -8,7 +7,7 @@ class Achievement:
         self.overallProgress = overallProgress
         self.currentProgress = currentProgress
 
-with open('befriend/src/befriend/resources/achievements.yml', 'r') as f: #wczytuje achievementy z yamla
+with open('resources/achievements.yml', 'r') as f: #wczytuje achievementy z yamla
     data = yaml.safe_load(f)
 
 achievementlist = [] #achievementy beda po kolei

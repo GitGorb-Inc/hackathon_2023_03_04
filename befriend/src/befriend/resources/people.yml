@@ -1,0 +1,31 @@
+person1:
+  isFriend: True
+  messagestatus: "Byłeś może dzisiaj na rynku??"
+
+person2:
+  isFriend: False
+
+person3:
+  isFriend: True
+  messagestatus: "Cześć! :)"
+
+person4:
+  isFriend: True
+  messagestatus: "elo"
+
+person5:
+  isFriend: False
+
+person6:
+  isFriend: True
+  messagestatus: "Chętnie podzielę się książkami!"
+
+person7:
+  isFriend: False
+
+person8:
+  isFriend: False
+
+person9:
+ isFriend: False
+
