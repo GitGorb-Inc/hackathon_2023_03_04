@@ -1,12 +1,12 @@
 """
-Simple friend finder
+Friend Finder for the socially inept
 """
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 
 
-class Friendr(toga.App):
+class BeFriend(toga.App):
 
     def startup(self):
         """
@@ -24,4 +24,4 @@ class Friendr(toga.App):
 
 
 def main():
-    return Friendr()
+    return BeFriend()
