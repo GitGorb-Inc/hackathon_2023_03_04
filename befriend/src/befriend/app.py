@@ -32,19 +32,20 @@ class NavigationBarFrame(customtkinter.CTkFrame):
 
         # widgets
         self.settings_button = customtkinter.CTkButton(master=self, text="", corner_radius=20, height=80, width=80,
-                                                       fg_color="transparent",
+                                                       fg_color="transparent", command=self.settings_button_event,
                                                        hover_color="#589ac4", image=self.settings_image)
         self.messages_button = customtkinter.CTkButton(master=self, text="", corner_radius=20, height=80, width=80,
-                                                       fg_color="transparent",
+                                                       fg_color="transparent", command=self.messages_button_event,
                                                        hover_color="#589ac4", image=self.messages_image)
         self.achievements_button = customtkinter.CTkButton(master=self, text="", corner_radius=20, height=80, width=80,
-                                                           fg_color="transparent", hover_color="#589ac4",
+                                                           fg_color="transparent", hover_color="#589ac4", command=self.achievements_button_event,
                                                            image=self.achievements_image)
         self.friends_button = customtkinter.CTkButton(master=self, text="", corner_radius=20, height=80, width=80,
-                                                      fg_color="transparent",
+                                                      fg_color="transparent", command=self.friends_button_event,
                                                       hover_color="#589ac4", image=self.friends_image)
         self.row_filler = customtkinter.CTkLabel(master=self, text="\n", width=720, height=100)
         self.home_spacer = customtkinter.CTkLabel(master=self, text="\n", width=150)
+        self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75, fg_color="gray95")
 
         # geometry
         self.settings_button.grid(row=0, column=6, padx=10, pady=10)
@@ -53,29 +54,53 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         self.friends_button.grid(row=0, column=2, padx=10, pady=10)
         self.row_filler.grid(row=1, column=0, columnspan=8)
         self.home_spacer.grid(row=0, column=3, columnspan=2)
+        self.home_bg.place(anchor="center", x=360)
 
-        def select_frame_by_name(self, name):
-            # set button color for selected button
-            self.home_button.configure(fg_color=("gray75", "gray25") if name == "home" else "transparent")
-            self.settings_button.configure(fg_color=("gray75", "gray25") if name == "settings" else "transparent")
-            self.messages_button.configure(fg_color=("gray75", "gray25") if name == "messages" else "transparent")
-            self.achievements_button.configure(
-                fg_color=("gray75", "gray25") if name == "achievements" else "transparent")
-            self.friends_button.configure(fg_color=("gray75", "gray25") if name == "friends" else "transparent")
+    def select_frame_by_name(self, name):
+        # set button color for selected button
+        self.home_button.configure(fg_color="#589ac4" if name == "home" else "transparent")
+        self.settings_button.configure(fg_color="#589ac4" if name == "settings" else "transparent")
+        self.messages_button.configure(fg_color="#589ac4" if name == "messages" else "transparent")
+        self.achievements_button.configure(fg_color="#589ac4" if name == "achievements" else "transparent")
+        self.friends_button.configure(fg_color="#589ac4" if name == "friends" else "transparent")
 
-            # show selected frame
-            if name == "home":
-                self.HomeFrame.grid(row=0, column=1, sticky="nsew")
-            else:
-                self.home_frame.grid_forget()
-            if name == "frame_2":
-                self.second_frame.grid(row=0, column=1, sticky="nsew")
-            else:
-                self.second_frame.grid_forget()
-            if name == "frame_3":
-                self.third_frame.grid(row=0, column=1, sticky="nsew")
-            else:
-                self.third_frame.grid_forget()
+        # show selected frame
+        # if name == "home":
+        #     HomeFrame.grid(row=0, column=1, sticky="nsew")
+        # else:
+        #     HomeFrame.grid_forget()
+        if name == "settings":
+            SettingsFrame.grid(row=0, column=1, sticky="nsew")
+        else:
+            HomeFrame.grid_forget()
+        if name == "messages":
+            MessagesFrame.grid(row=0, column=1, sticky="nsew")
+        else:
+            HomeFrame.grid_forget()
+        if name == "achievements":
+            AchievementsFrame.grid(row=0, column=1, sticky="nsew")
+        else:
+            HomeFrame.grid_forget()
+        if name == "friends":
+            FriendsFrame.grid(row=0, column=1, sticky="nsew")
+        else:
+            HomeFrame.grid_forget()
+
+    def home_button_event(self):
+        self.select_frame_by_name("home")
+
+    def settings_button_event(self):
+        self.select_frame_by_name("settings")
+
+    def messages_button_event(self):
+        self.select_frame_by_name("messages")
+
+    def achievements_button_event(self):
+        self.select_frame_by_name("achievements")
+
+    def friends_button_event(self):
+        self.select_frame_by_name("friends")
+
 
 
 
@@ -158,21 +183,6 @@ class BeFriend(customtkinter.CTk):
         dialog = customtkinter.CTkInputDialog(text="Enter command", title="Development Console")
         cmd = dialog.get_input()
         print(cmd)
-
-    def home_button_event(self):
-        self.select_frame_by_name("home")
-
-    def settings_button_event(self):
-        self.select_frame_by_name("settings")
-
-    def messages_button_event(self):
-        self.select_frame_by_name("messages")
-
-    def achievements_button_event(self):
-        self.select_frame_by_name("achievements")
-
-    def friends_button_event(self):
-        self.select_frame_by_name("friends")
 
 def main():
     return BeFriend()
