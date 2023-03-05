@@ -67,21 +67,21 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         # else:
         #     HomeFrame.grid_forget()
         if name == "settings":
-            SettingsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.settings.grid(row=0, column=1, sticky="nsew")
         else:
-            SettingsFrame.grid_forget()
+            self.master.settings.grid_forget()
         if name == "messages":
-            MessagesFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.messages.grid(row=0, column=1, sticky="nsew")
         else:
-            MessagesFrame.grid_forget()
+            self.master.messages.grid_forget()
         if name == "achievements":
-            AchievementsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.achievements.grid(row=0, column=1, sticky="nsew")
         else:
-            AchievementsFrame.grid_forget()
+            self.master.achievements.grid_forget()
         if name == "friends":
-            FriendsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.friends.grid(row=0, column=1, sticky="nsew")
         else:
-            FriendsFrame.grid_forget()
+            self.master.friends.grid_forget()
 
     def home_button_event(self):
         self.select_frame_by_name("home")
@@ -97,11 +97,6 @@ class NavigationBarFrame(customtkinter.CTkFrame):
 
     def friends_button_event(self):
         self.select_frame_by_name("friends")
-
-
-
-
-
 
 
 class HomeFrame(customtkinter.CTkFrame):
