@@ -11,8 +11,16 @@ customtkinter.set_default_color_theme("befriend_theme.json")
 #     customtkinter.set_appearance_mode("system")
 
 customtkinter.set_appearance_mode("light")
-customtkinter.set_widget_scaling(1)  # widget dimensions and text size
+customtkinter.set_widget_scaling(0.6)  # widget dimensions and text size
 customtkinter.set_window_scaling(0.6)  # window geometry dimensions
+
+
+class BottomBarFrame(customtkinter.CTkFrame):
+    def __init__(self, master, **kwargs):
+        super().__init__(master, **kwargs)
+
+        # widgets
+
 
 class BeFriend(customtkinter.CTk):
     def __init__(self):
@@ -24,9 +32,10 @@ class BeFriend(customtkinter.CTk):
 
         # widgets
         self.button = customtkinter.CTkButton(master=self, text="CLI", command=self.button_callback)
-
+        self.lowerBar = BottomBarFrame(master=self, fg_color="#477998", corner_radius=25, width=720, height=200)
         # geometry
         self.button.place(x=0, y=0)
+        self.lowerBar.place(x=0, y=1180)
 
     # widget methods
     def button_callback(self):
