@@ -8,14 +8,16 @@ if platform == "linux" or platform == "linux2":
 else:
     customtkinter.set_appearance_mode("system")
 
-customtkinter.set_widget_scaling(1)  # widget dimensions and text size
-customtkinter.set_window_scaling(0.5)  # window geometry dimensions
+customtkinter.set_widget_scaling(1.1)  # widget dimensions and text size
+customtkinter.set_window_scaling(0.6)  # window geometry dimensions
 
 class BeFriend(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.title("BeFriend - Friend Finder for the socially inept")
-        self.minsize(720, 1280)
+        self.geometry("720x1280")
+        self.resizable(False, False)
+        # self.iconbitmap("/resources/file.ico")
 
         # widgets
         self.button = customtkinter.CTkButton(master=self, command=self.button_callback)
