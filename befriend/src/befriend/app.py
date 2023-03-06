@@ -154,8 +154,77 @@ class FriendsFrame(customtkinter.CTkScrollableFrame):
         super().__init__(master, **kwargs)
 
         # add widgets onto the frame...
-        self.label = customtkinter.CTkLabel(self, text="Friends")
-        self.label.grid(row=0, column=0, padx=20)
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
+        self.profile0_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 6.png")),
+                                                     size=(210, 210))
+        self.profile1_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 7.png")),
+                                                     size=(210, 210))
+        self.profile2_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 8.png")),
+                                                     size=(210, 210))
+        self.profile3_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 9.png")),
+                                                     size=(210, 210))
+        self.profile4_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 10.png")),
+                                                     size=(210, 210))
+        self.profile_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 12.png")),
+                                                     size=(210, 210))
+
+        # widgets
+        self.profile0 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile0_image)
+        self.profile1 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile1_image)
+        self.profile2 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile2_image)
+        self.profile3 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile3_image)
+        self.profile4 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile4_image)
+        self.profile5 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile6 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile7 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile8 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile9 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile10 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile11 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile12 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile13 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile14 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile15 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile16 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+        self.profile17 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
+                                                fg_color="transparent", hover=False, image=self.profile_image)
+
+        # geometry
+        self.profile0.grid(row=0, column=0, pady=10)
+        self.profile1.grid(row=0, column=1, pady=10)
+        self.profile2.grid(row=0, column=2, pady=10)
+        self.profile3.grid(row=1, column=0, pady=10)
+        self.profile4.grid(row=1, column=1, pady=10)
+        self.profile5.grid(row=1, column=2, pady=10)
+        self.profile6.grid(row=2, column=0, pady=10)
+        self.profile7.grid(row=2, column=1, pady=10)
+        self.profile8.grid(row=2, column=2, pady=10)
+        self.profile9.grid(row=3, column=0, pady=10)
+        self.profile10.grid(row=3, column=1, pady=10)
+        self.profile11.grid(row=3, column=2, pady=10)
+        self.profile12.grid(row=4, column=0, pady=10)
+        self.profile13.grid(row=4, column=1, pady=10)
+        self.profile14.grid(row=4, column=2, pady=10)
+        self.profile15.grid(row=5, column=0, pady=10)
+        self.profile16.grid(row=5, column=1, pady=10)
+        self.profile17.grid(row=5, column=2, pady=10)
 
 
 class BeFriend(customtkinter.CTk):
