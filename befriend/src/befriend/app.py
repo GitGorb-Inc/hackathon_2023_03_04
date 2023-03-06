@@ -195,7 +195,7 @@ class FriendsFrame(customtkinter.CTkScrollableFrame):
                                                      size=(210, 210))
         self.profile4_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 10.png")),
                                                      size=(210, 210))
-        self.profile5_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 12.png")),
+        self.profile_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 12.png")),
                                                      size=(210, 210))
 
         # widgets
