@@ -11,6 +11,8 @@ customtkinter.set_appearance_mode("light")
 customtkinter.set_widget_scaling(0.6)  # widget dimensions and text size
 customtkinter.set_window_scaling(0.6)  # window geometry dimensions
 
+image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
+
 
 class NavigationBarFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -118,7 +120,7 @@ class HomeFrame(customtkinter.CTkFrame):
         self.title = customtkinter.CTkLabel(master=self, text="Welcome, [Placeholder]", font=("roboto",60))
         self.title2 = customtkinter.CTkLabel(master=self, text="You have 5 friends and 12 points.", font=("roboto",35))
         self.grid_columnconfigure(0, weight=0)
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
+        #image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
         self.pfp_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 11.png")), size=(400, 400))
         self.pfp_button = customtkinter.CTkButton(master=self, text="", corner_radius=0, height=400, width=400,
                                                   fg_color="transparent", hover=False, image=self.pfp_image)
@@ -225,6 +227,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
         # Creating something out of nothing.
         # Pointless. Impossible.
 
+        '''
         self.title = customtkinter.CTkLabel(master=self, text="Pending", font=("roboto",50))
         self.achieve1 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto",50), corner_radius=12, height=150, width=680,
                                                   fg_color="#1bb55c", hover=False)
@@ -255,6 +258,93 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.achieve3.grid(row=3, pady=15)
         self.title2.grid(row=4, pady=30)
         self.achieve4.grid(row=5, pady=15)
+        '''
+
+        self.main = self.master
+        self.awidth = 660
+        self.todo = customtkinter.CTkScrollableFrame(
+                self, width=self.awidth, fg_color="#ff0000")
+        self.done = customtkinter.CTkScrollableFrame(
+                self, width=self.awidth, fg_color="#0000ff")
+        self.todo_label = customtkinter.CTkLabel(
+                self.todo, width=150, height=50, bg_color="transparent",
+                text="To do:", font=self.main.title_font)
+        self.done_label = customtkinter.CTkLabel(
+                self.done, width=150, height=50, bg_color="transparent",
+                text="Done:", font=self.main.title_font)
+
+        self.todo_label.grid(row=0, column=0, padx=20, pady=20, sticky="nw")
+        self.done_label.grid(row=0, column=0, padx=20, pady=20, sticky="nw")
+
+        self.acolor = "#1bb55c"
+        self.aheight = 180
+        self.aimage = Image.open(os.path.join(image_path, "achievement-placeholder.png"))
+
+        self.todos = 1
+        self.dones = 1
+        #self.achievements = []
+
+        self.add_achievement(done=True)
+        self.add_achievement(done=True)
+        self.add_achievement(done=True)
+        self.add_achievement(done=True)
+        self.add_achievement(done=True)
+        self.add_achievement(done=False)
+        self.add_achievement(done=False)
+        self.add_achievement(done=False)
+        self.add_achievement(done=False)
+
+        maxheight = 940
+        todo_height = min(60+self.todos*(self.aheight+40), 4*maxheight//9)
+        done_height = min(60+self.todos*(self.aheight+40), maxheight-todo_height)
+        self.todo.configure(height=todo_height)
+        self.done.configure(height=done_height)
+
+        todo_spacer = customtkinter.CTkLabel(
+                self.todo, 680, 20, text="",
+                fg_color="transparent", bg_color="transparent")
+        todo_spacer.grid(row=self.todos, column=0, sticky="sew")
+        done_spacer = customtkinter.CTkLabel(
+                self.done, 680, 20, text="",
+                fg_color="transparent", bg_color="transparent")
+        done_spacer.grid(row=self.dones, column=0, sticky="sew")
+        self.todo.grid(row=0, column=0)
+        self.done.grid(row=1, column=0, pady=30)
+
+    def add_achievement(self, name="Achievement", progress=7, pamount=14, done=False):
+        if done:
+            aframe = customtkinter.CTkFrame(self.done, fg_color=self.acolor,
+                                            height=self.aheight, width=self.awidth-20, corner_radius=10)
+            alabel = customtkinter.CTkLabel(
+                    aframe, width=4*self.awidth//7, height=self.aheight-40,
+                    text=name, font=self.main.normal_font, text_color="#ffffff")
+            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//7, self.aheight-40))
+            imholder = customtkinter.CTkButton(
+                    aframe, image=aimage, width=1*self.awidth//7, height=self.aheight-40,
+                    hover=False, text="", fg_color="transparent", bg_color="transparent")
+
+            imholder.grid(row=0, column=0, pady=10, padx=10, sticky="nsw")
+            alabel.grid(row=0, column=1, pady=10, padx=10, sticky="nse")
+            aframe.grid(row=self.dones, column=0, pady=10, padx=20)
+            self.dones += 1
+
+        else:
+            aframe = customtkinter.CTkFrame(self.todo, fg_color=self.acolor,
+                                            height=self.aheight, width=self.awidth-20, corner_radius=10)
+            alabel = customtkinter.CTkLabel(
+                    aframe, width=4*self.awidth//7, height=self.aheight-40,
+                    text=name, font=self.main.normal_font, text_color="#ffffff")
+            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//7, self.aheight-40))
+            imholder = customtkinter.CTkButton(
+                    aframe, image=aimage, width=1*self.awidth//7, height=self.aheight-40,
+                    hover=False, text="", fg_color="transparent", bg_color="transparent")
+
+            imholder.grid(row=0, column=0, pady=10, padx=10, sticky="nsw", rowspan=2)
+            alabel.grid(row=0, column=1, pady=10, padx=10, sticky="nse")
+            aframe.grid(row=self.todos, column=0, pady=10, padx=20)
+            self.todos += 1
+
+        #self.achievements.append(aframe)
 
 
 class FriendsFrame(customtkinter.CTkScrollableFrame):
@@ -262,7 +352,6 @@ class FriendsFrame(customtkinter.CTkScrollableFrame):
         super().__init__(master, **kwargs)
 
         # add widgets onto the frame...
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
         self.profile0_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 6.png")),
                                                      size=(210, 210))
         self.profile1_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 7.png")),
