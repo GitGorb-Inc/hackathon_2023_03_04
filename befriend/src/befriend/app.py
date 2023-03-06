@@ -1,8 +1,8 @@
 import customtkinter
 import os
 from PIL import Image
-import tkinter
-from sys import platform
+# import tkinter
+# from sys import platform
 
 customtkinter.set_default_color_theme("befriend_theme.json")
 
@@ -22,12 +22,9 @@ class NavigationBarFrame(customtkinter.CTkFrame):
 
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/nav_bar")
         self.home_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "home.png")), size=(80, 80))
-        self.settings_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "settings.png")),
-                                                     size=(80, 80))
-        self.messages_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "messages.png")),
-                                                     size=(80, 80))
-        self.achievements_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "achievements.png")),
-                                                         size=(80, 80))
+        self.settings_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "settings.png")), size=(80, 80))
+        self.messages_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "messages.png")), size=(80, 80))
+        self.achievements_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "achievements.png")), size=(80, 80))
         self.friends_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "friends.png")), size=(80, 80))
 
         # widgets
@@ -58,7 +55,7 @@ class NavigationBarFrame(customtkinter.CTkFrame):
 
     def select_frame_by_name(self, name):
         # set button color for selected button
-        self.home_button.configure(fg_color="#589ac4" if name == "home" else "transparent")
+        # self.home_button.configure(fg_color="#589ac4" if name == "home" else "transparent")
         self.settings_button.configure(fg_color="#589ac4" if name == "settings" else "transparent")
         self.messages_button.configure(fg_color="#589ac4" if name == "messages" else "transparent")
         self.achievements_button.configure(fg_color="#589ac4" if name == "achievements" else "transparent")
@@ -70,21 +67,21 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         # else:
         #     HomeFrame.grid_forget()
         if name == "settings":
-            SettingsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.settings.grid(row=0, column=1, sticky="nsew")
         else:
-            HomeFrame.grid_forget()
+            self.master.settings.grid_forget()
         if name == "messages":
-            MessagesFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.messages.grid(row=0, column=1, sticky="nsew")
         else:
-            HomeFrame.grid_forget()
+            self.master.messages.grid_forget()
         if name == "achievements":
-            AchievementsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.achievements.grid(row=0, column=1, sticky="nsew")
         else:
-            HomeFrame.grid_forget()
+            self.master.achievements.grid_forget()
         if name == "friends":
-            FriendsFrame.grid(row=0, column=1, sticky="nsew")
+            self.master.friends.grid(row=0, column=1, sticky="nsew")
         else:
-            HomeFrame.grid_forget()
+            self.master.friends.grid_forget()
 
     def home_button_event(self):
         self.select_frame_by_name("home")
@@ -100,11 +97,6 @@ class NavigationBarFrame(customtkinter.CTkFrame):
 
     def friends_button_event(self):
         self.select_frame_by_name("friends")
-
-
-
-
-
 
 
 class HomeFrame(customtkinter.CTkFrame):
@@ -162,8 +154,7 @@ class BeFriend(customtkinter.CTk):
 
         self.CLI = customtkinter.CTkButton(master=self, text="CLI", command=self.CLI_callback)
         # navigationBar
-        self.navigationBar = NavigationBarFrame(master=self, fg_color="#477998", corner_radius=25, width=720,
-                                                height=200)
+        self.navigationBar = NavigationBarFrame(master=self, fg_color="#477998", corner_radius=25, width=720, height=200)
 
         # frames
         self.home = HomeFrame(master=self, corner_radius=0, fg_color="transparent")
