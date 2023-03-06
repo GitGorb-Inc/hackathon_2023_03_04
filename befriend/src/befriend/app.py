@@ -167,10 +167,15 @@ class MessagesFrame(customtkinter.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
-        # add widgets onto the frame...
-        self.label = customtkinter.CTkLabel(self, text="Messages")
-        self.label.grid(row=0, column=0, padx=20)
-
+        self.image_path = os.path.join(os.path.dirname(
+            os.path.realpath(__file__)), "resources/messages.png")
+        self.not_a_mock_image_at_all = customtkinter.CTkImage(
+                Image.open(self.image_path), size=(680, 1000))
+        self.definitely_not_mock = customtkinter.CTkButton(
+                self, image=self.not_a_mock_image_at_all, text="", hover=False,
+                width=680, height=1000, bg_color="transparent",
+                fg_color="transparent")
+        self.definitely_not_mock.grid(row=0, column=0)
 
 class AchievementsFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -230,9 +235,9 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.main = self.master
         self.awidth = 660
         self.todo = customtkinter.CTkScrollableFrame(
-                self, width=self.awidth, fg_color="#ff0000")
+                self, width=self.awidth, fg_color="transparent")
         self.done = customtkinter.CTkScrollableFrame(
-                self, width=self.awidth, fg_color="#0000ff")
+                self, width=self.awidth, fg_color="transparent")
         self.todo_label = customtkinter.CTkLabel(
                 self.todo, width=150, height=50, bg_color="transparent",
                 text="To do:", font=self.main.title_font)
@@ -244,7 +249,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.done_label.grid(row=0, column=0, padx=20, pady=20, sticky="nw")
 
         self.acolor = "#1bb55c"
-        self.aheight = 180
+        self.aheight = 160
         self.aimage = Image.open(os.path.join(image_path, "achievement-placeholder.png"))
 
         self.todos = 1
@@ -285,7 +290,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
             alabel = customtkinter.CTkLabel(
                     aframe, width=4*self.awidth//7, height=self.aheight-40,
                     text=name, font=self.main.normal_font, text_color="#ffffff")
-            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//7, self.aheight-40))
+            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//8, self.aheight-40))
             imholder = customtkinter.CTkButton(
                     aframe, image=aimage, width=1*self.awidth//7, height=self.aheight-40,
                     hover=False, text="", fg_color="transparent", bg_color="transparent")
@@ -301,7 +306,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
             alabel = customtkinter.CTkLabel(
                     aframe, width=4*self.awidth//7, height=self.aheight-40,
                     text=name, font=self.main.normal_font, text_color="#ffffff")
-            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//7, self.aheight-40))
+            aimage = customtkinter.CTkImage(dark_image=self.aimage, size=(2*self.awidth//8, self.aheight-40))
             imholder = customtkinter.CTkButton(
                     aframe, image=aimage, width=1*self.awidth//7, height=self.aheight-40,
                     hover=False, text="", fg_color="transparent", bg_color="transparent")
