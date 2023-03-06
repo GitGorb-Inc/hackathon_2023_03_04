@@ -181,6 +181,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
+        # by polyoid
         # add widgets onto the frame...
         # fuck my life...
         # no, seriously, why do we have to do this?
@@ -407,7 +408,7 @@ class BeFriend(customtkinter.CTk):
         self.title("BeFriend - Friend Finder for the socially inept")
         self.geometry("720x1280")
         self.resizable(False, False)
-        # self.iconbitmap("/resources/file.ico")
+        self.iconbitmap("./resources/file.ico")
         self.title_font = customtkinter.CTkFont(size=50)
         self.normal_font = customtkinter.CTkFont(size=30)
 
