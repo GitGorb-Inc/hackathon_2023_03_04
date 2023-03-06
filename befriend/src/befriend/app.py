@@ -175,7 +175,58 @@ class AchievementsFrame(customtkinter.CTkScrollableFrame):
         super().__init__(master, **kwargs)
 
         # add widgets onto the frame...
+        # fuck my life...
+        # no, seriously, why do we have to do this?
+        # this is like, pointless. So pointless. So pointless in fact, I want to kill myself.
+        # No, like, really, really, want to kill myself.
+        # There is a plethora of electrical sockets around me. All it takes is to take any metal object and
+        # just shove it into the socket with my own hand.
+        # That way, the heart stops by ceasing to create electrical impulses from the Purkini nodes.
+        # Or whatever.
+        # Anyway, I want to go home.
+        # I want this to end.
+        # There is no point in doing this.
+        # We already have the free stuff
+        # This
+        # is
+        # pointless
+        # It is.
+        # You may ask, what if it isn't?
+        # STOP.
+        # IT IS.
+        # IT TRULY IS.
+        # Why do we have to do whatever it takes to finish this?
+        # It's not like there is any hope in finishing this.
+        # The sheer fact of finishing this will give us nothing.
+        # Not even a shred of satisfaction.
+        # What satisfaction can there be by doing this botched hackjob?
+        # This is just a spiral of self-pity.
+        # By trying to finish this we'll be only trying to feel good about ourselves.
+        # But is it worth it?
+        # No.
+        # It isn't.
+        # It
+        # just
+        # isn't.
+        # So what if we finish this?
+        # Will there be a use of this?
+        # No.
+        # Will it do any good?
+        # Or anyTHING at that?
+        # No.
+        # It's a sham.
+        # It's a game of pretending.
+        # It's a charade.
+        # It's a fake.
+        # Life is fake.
+        # Everything is fake.
+        # By placing these little hurdles along our ways we can congratulate ourselves.
+        # But what it is, is pitiful.
+        # Creating something out of nothing.
+        # Pointless. Impossible.
+
         self.label = customtkinter.CTkLabel(self, text="Achievements")
+
         self.label.grid(row=0, column=0, sticky="nsew")
 
 
@@ -300,7 +351,7 @@ class BeFriend(customtkinter.CTk):
 
     # widget methods
     def CLI_callback(self):
-        dialog = customtkinter.CTkInputDialog(text="Enter command", title="Development Console")
+        dialog = customtkinter.CTkInputDialog(text="Enter cmmoand", title="Development Console")
         cmd = dialog.get_input()
         print(cmd)
 
