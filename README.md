@@ -11,8 +11,5 @@ BeFriend ułatwia kontakt między ludźmi, zamieniając go w grę. Motywację za
 Punkty <nazwa> są wykorzystywane w sklepie, gdzie można znaleźć emotki, ramki do ikony profilu, itp
 
 
-TODO:
-- [] meetup points w bezpiecznych miejscach
-- [] meetupy w miejscach opartych o zainteresowania
-- [] 
-- [] 
+# Uruchamianie testowej aplikacji
+Należy uruchomić plik /befriend/src/befriend/__main__.py
