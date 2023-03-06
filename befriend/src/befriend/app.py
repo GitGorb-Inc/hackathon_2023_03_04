@@ -47,11 +47,11 @@ class NavigationBarFrame(customtkinter.CTkFrame):
                                                       hover_color="#589ac4", image=self.friends_image)
         self.row_filler = customtkinter.CTkLabel(master=self, text="\n", width=720, height=100)
         self.home_spacer = customtkinter.CTkLabel(master=self, text="\n", width=150)
+        self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75,
+                                              fg_color="gray95")
         self.home_button = customtkinter.CTkButton(master=self, text="", corner_radius=65, height=130, width=130,
                                                        fg_color="transparent", command=self.home_button_event,
                                                        hover_color="#589ac4", image=self.home_image)
-        self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75,
-                                              fg_color="gray95")
 
         # geometry
         self.settings_button.grid(row=0, column=6, padx=10, pady=10)
@@ -60,8 +60,8 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         self.friends_button.grid(row=0, column=2, padx=10, pady=10)
         self.row_filler.grid(row=1, column=0, columnspan=8)
         self.home_spacer.grid(row=0, column=3, columnspan=2)
-        self.home_button.place(anchor="center", x=360, y=1180)
         self.home_bg.place(anchor="center", x=360)
+        self.home_button.place(anchor="center", x=360)#, y=1180)
 
 
     def select_frame_by_name(self, name):
