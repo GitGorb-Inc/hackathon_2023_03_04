@@ -55,7 +55,6 @@ class NavigationBarFrame(customtkinter.CTkFrame):
                                                    hover=False, width=130, height=130, border_width=-1,
                                                    border_spacing=-1)
 
-
         # geometry
         self.settings_button.grid(row=0, column=6, padx=10, pady=10)
         self.messages_button.grid(row=0, column=1, padx=10, pady=10)
@@ -65,8 +64,6 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         self.home_spacer.grid(row=0, column=3, columnspan=2)
         self.home_button.place(anchor="center", x=360, y=50)
         # self.home_bg.place(anchor="center", x=360)
-
-
 
     def select_frame_by_name(self, name):
         # set button color for selected button
@@ -118,8 +115,16 @@ class HomeFrame(customtkinter.CTkFrame):
         super().__init__(master, **kwargs)
 
         # add widgets onto the frame...
-        self.label = customtkinter.CTkLabel(self, text="Home")
-        self.label.grid(row=0, column=0, padx=20)
+        self.title = customtkinter.CTkLabel(master=self, text="Welcome, [Placeholder]", font=("roboto",60))
+        self.title2 = customtkinter.CTkLabel(master=self, text="You have 5 friends and 12 points.", font=("roboto",35))
+        self.grid_columnconfigure(0, weight=0)
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources/PNG")
+        self.pfp_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 11.png")), size=(400, 400))
+        self.pfp_button = customtkinter.CTkButton(master=self, text="", corner_radius=0, height=400, width=400,
+                                                  fg_color="transparent", hover=False, image=self.pfp_image)
+        self.pfp_button.place(anchor="n", relx=0.5, rely=0.1)
+        self.title.place(anchor="n", relx=0.5, rely=0.55)
+        self.title2.place(anchor="n", relx=0.5, rely=0.65)
 
 
 class SettingsFrame(customtkinter.CTkScrollableFrame):
@@ -129,10 +134,14 @@ class SettingsFrame(customtkinter.CTkScrollableFrame):
         self.main = self.master.master.master
         # add widgets onto the frame...
         self.label = customtkinter.CTkLabel(self, text="Settings", font=self.main.title_font, width=640, height=200)
-        self.fsize_label = customtkinter.CTkLabel(self, text="Font Size", font=self.main.normal_font,width=640, height=50)
-        self.fsize_slider = customtkinter.CTkSlider(self, width=400, height=30, from_=8, to=20, command=self.adjust_font)
-        self.logout = customtkinter.CTkButton(self, width=200, height=80, fg_color="#ff0000", text="Logout", font=self.main.normal_font)
-        self.delete = customtkinter.CTkButton(self, width=200, height=80, fg_color="#ff0000", text="Delete Account", font=self.main.normal_font)
+        self.fsize_label = customtkinter.CTkLabel(self, text="Font Size", font=self.main.normal_font, width=640,
+                                                  height=50)
+        self.fsize_slider = customtkinter.CTkSlider(self, width=400, height=30, from_=8, to=20,
+                                                    command=self.adjust_font)
+        self.logout = customtkinter.CTkButton(self, width=200, height=80, fg_color="#ff0000", text="Logout",
+                                              font=self.main.normal_font)
+        self.delete = customtkinter.CTkButton(self, width=200, height=80, fg_color="#ff0000", text="Delete Account",
+                                              font=self.main.normal_font)
 
         self.label.grid(row=0, column=0, sticky="new")
         self.fsize_label.grid(row=1, column=0, pady=20, sticky="new")
@@ -167,7 +176,7 @@ class AchievementsFrame(customtkinter.CTkScrollableFrame):
 
         # add widgets onto the frame...
         self.label = customtkinter.CTkLabel(self, text="Achievements")
-        self.label.grid(row=0, column=0, padx=20)
+        self.label.grid(row=0, column=0, sticky="nsew")
 
 
 class FriendsFrame(customtkinter.CTkScrollableFrame):
@@ -187,7 +196,7 @@ class FriendsFrame(customtkinter.CTkScrollableFrame):
         self.profile4_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 10.png")),
                                                      size=(210, 210))
         self.profile_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image 12.png")),
-                                                     size=(210, 210))
+                                                    size=(210, 210))
 
         # widgets
         self.profile0 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
@@ -211,21 +220,21 @@ class FriendsFrame(customtkinter.CTkScrollableFrame):
         self.profile9 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile10 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile11 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile12 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile13 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile14 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile15 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile16 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
         self.profile17 = customtkinter.CTkButton(master=self, text="", corner_radius=10, height=210, width=210,
-                                                fg_color="transparent", hover=False, image=self.profile_image)
+                                                 fg_color="transparent", hover=False, image=self.profile_image)
 
         # geometry
         self.profile0.grid(row=0, column=0, pady=10)
@@ -286,7 +295,8 @@ class BeFriend(customtkinter.CTk):
         self.navigationBar.place(x=0, y=1180)
         self.logo_text.place(anchor="nw", y=20, x=40)
         self.logo_button.place(anchor="nw", y=20, x=600)
-        #self.navigationBar.home_button.place(anchor="center",x=360,y=1180)
+        # self.navigationBar.home_button.place(anchor="center",x=360,y=1180)
+        self.navigationBar.select_frame_by_name("home")
 
     # widget methods
     def CLI_callback(self):
