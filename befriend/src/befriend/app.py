@@ -289,9 +289,9 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.add_achievement(done=True, name="Interfejs zaklepany")
         self.add_achievement(done=True, name="Hackathon wygrany")
         self.add_achievement(done=True)
-        self.add_achievement(done=False, name="Piwo")
-        self.add_achievement(done=False, name="Wincyj piwa")
-        self.add_achievement(done=False)
+        self.add_achievement(done=False, name="Piwo", progress=(32, 127))
+        self.add_achievement(done=False, name="Wincyj piwa", progress=(99, 100))
+        self.add_achievement(done=False, progress=(69, 420))
         self.add_achievement(done=False)
 
         maxheight = 950
@@ -311,7 +311,7 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.todo.grid(row=0, column=0)
         self.done.grid(row=1, column=0, pady=30)
 
-    def add_achievement(self, name="Achievement", progress=7, pamount=14, done=False):
+    def add_achievement(self, name="Achievement", progress=(7, 14), done=False):
         if done:
             aframe = customtkinter.CTkFrame(self.done, fg_color=self.acolor,
                                             height=self.aheight, width=self.awidth-20, corner_radius=10)
@@ -338,9 +338,14 @@ class AchievementsFrame(customtkinter.CTkFrame):
             imholder = customtkinter.CTkButton(
                     aframe, image=aimage, width=1*self.awidth//7, height=self.aheight-40,
                     hover=False, text="", fg_color="transparent", bg_color="transparent")
+            abar = customtkinter.CTkProgressBar(
+                    aframe, corner_radius=10, height=20, width=3*self.awidth//7,
+                    progress_color="#0e4da3", fg_color="#ffffff")
+            abar.set(progress[0]/progress[1])
 
             imholder.grid(row=0, column=0, pady=10, padx=10, sticky="nsw", rowspan=2)
             alabel.grid(row=0, column=1, pady=10, padx=10, sticky="nse")
+            abar.grid(row=1, column=1, pady=5, padx=10)
             aframe.grid(row=self.todos, column=0, pady=10, padx=20)
             self.todos += 1
 
