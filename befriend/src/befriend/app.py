@@ -48,8 +48,8 @@ class NavigationBarFrame(customtkinter.CTkFrame):
                                                       hover_color="#589ac4", image=self.friends_image)
         self.row_filler = customtkinter.CTkLabel(master=self, text="\n", width=720, height=100)
         self.home_spacer = customtkinter.CTkLabel(master=self, text="\n", width=150)
-        self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75,
-                                              fg_color="gray95")
+        #self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75,
+        #                                      fg_color="gray95")
         self.home_button = customtkinter.CTkButton(master=self, text="", image=self.home_image,
                                                    fg_color="transparent", command=self.home_button_event,
                                                    hover=False, width=130, height=130, border_width=-1,
@@ -126,10 +126,40 @@ class SettingsFrame(customtkinter.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
+        self.main = self.master.master.master
         # add widgets onto the frame...
-        self.label = customtkinter.CTkLabel(self, text="Settings")
-        self.label.grid(row=0, column=0, padx=20)
+        self.label = customtkinter.CTkLabel(
+                self, text="Settings", font=self.main.title_font,
+                width=640, height=200)
+        self.fsize_label = customtkinter.CTkLabel(
+                self, text="Font Size", font=self.main.normal_font,
+                width=640, height=50)
+        self.fsize_slider = customtkinter.CTkSlider(
+                self, width = 400, height=30,
+                from_=8, to=20, command=self.adjust_font)
+        self.logout = customtkinter.CTkButton(self, width=200, height=80,
+                                              fg_color="#ff0000", text="Logout",
+                                              font=self.main.normal_font)
+        self.delete = customtkinter.CTkButton(self, width=200, height=80,
+                                              fg_color="#ff0000", text="Delete Account",
+                                              font=self.main.normal_font)
 
+        self.label.grid(row=0, column=0, sticky="new")
+        self.fsize_label.grid(row=1, column=0, pady=20, sticky="new")
+        self.fsize_slider.grid(row=2, column=0, pady=10)
+        self.logout.grid(row=3, column=0, pady=40)
+        self.delete.grid(row=4, column=0, pady=30)
+
+    def adjust_font(self, val):
+        val = int(val)
+        self.main.title_font = customtkinter.CTkFont(size=5*val)
+        self.main.normal_font = customtkinter.CTkFont(size=3*val)
+        self.label.configure(True, font=self.main.title_font)
+        self.fsize_label.configure(True, font=self.main.normal_font)
+        self.logout.configure(font=self.main.normal_font,
+                              width=80+10*val, height=50+3*val)
+        self.delete.configure(font=self.main.normal_font,
+                              width=100+10*val, height=50+3*val)
 
 class MessagesFrame(customtkinter.CTkScrollableFrame):
     def __init__(self, master, **kwargs):
@@ -165,6 +195,8 @@ class BeFriend(customtkinter.CTk):
         self.geometry("720x1280")
         self.resizable(False, False)
         # self.iconbitmap("/resources/file.ico")
+        self.title_font = customtkinter.CTkFont(size=50)
+        self.normal_font = customtkinter.CTkFont(size=30)
 
         self.CLI = customtkinter.CTkButton(master=self, text="CLI", command=self.CLI_callback)
         # widgets
