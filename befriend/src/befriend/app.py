@@ -284,18 +284,18 @@ class AchievementsFrame(customtkinter.CTkFrame):
         self.dones = 1
         #self.achievements = []
 
+        self.add_achievement(done=True, name="Pomysł wpadnięty")
+        self.add_achievement(done=True, name="Kod rozpoczęty")
+        self.add_achievement(done=True, name="Interfejs zaklepany")
+        self.add_achievement(done=True, name="Hackathon wygrany")
         self.add_achievement(done=True)
-        self.add_achievement(done=True)
-        self.add_achievement(done=True)
-        self.add_achievement(done=True)
-        self.add_achievement(done=True)
-        self.add_achievement(done=False)
-        self.add_achievement(done=False)
+        self.add_achievement(done=False, name="Piwo")
+        self.add_achievement(done=False, name="Wincyj piwa")
         self.add_achievement(done=False)
         self.add_achievement(done=False)
 
-        maxheight = 940
-        todo_height = min(60+self.todos*(self.aheight+40), 4*maxheight//9)
+        maxheight = 950
+        todo_height = min(60+self.todos*(self.aheight+40), maxheight//2)
         done_height = min(60+self.todos*(self.aheight+40), maxheight-todo_height)
         self.todo.configure(height=todo_height)
         self.done.configure(height=done_height)
