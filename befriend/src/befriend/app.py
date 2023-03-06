@@ -153,10 +153,16 @@ class BeFriend(customtkinter.CTk):
         # self.iconbitmap("/resources/file.ico")
 
         self.CLI = customtkinter.CTkButton(master=self, text="CLI", command=self.CLI_callback)
-        # navigationBar
-        self.navigationBar = NavigationBarFrame(master=self, fg_color="#477998", corner_radius=25, width=720, height=200)
+        # widgets
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "resources")
+        self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "logo.png")), size=(106, 150))
+        self.logo_button = customtkinter.CTkButton(master=self, text="", corner_radius=0, height=150, width=106,
+                                                       fg_color="transparent", command=self.logo_button_event,
+                                                       hover_color="gray95", image=self.logo_image)
+
 
         # frames
+        self.navigationBar = NavigationBarFrame(master=self, fg_color="#477998", corner_radius=25, width=720, height=200)
         self.home = HomeFrame(master=self, corner_radius=0, fg_color="transparent")
         self.settings = SettingsFrame(master=self, corner_radius=0, fg_color="transparent")
         self.messages = MessagesFrame(master=self, corner_radius=0, fg_color="transparent")
@@ -166,14 +172,16 @@ class BeFriend(customtkinter.CTk):
         # frame switching
 
         # geometry
-        self.CLI.place(x=0, y=0)
+        # self.CLI.place(x=0, y=0)
         self.navigationBar.place(x=0, y=1180)
-
+        self.logo_button.place(anchor="nw", y=10, x=570)
     # widget methods
     def CLI_callback(self):
         dialog = customtkinter.CTkInputDialog(text="Enter command", title="Development Console")
         cmd = dialog.get_input()
         print(cmd)
+    def logo_button_event(self):
+        print("Logo clicked")
 
 def main():
     return BeFriend()
