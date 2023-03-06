@@ -32,9 +32,6 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         self.friends_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "friends.png")), size=(80, 80))
 
         # widgets
-        self.home_button = customtkinter.CTkButton(master=self, text="", corner_radius=65, height=130, width=130,
-                                                       fg_color="transparent", command=self.home_button_event,
-                                                       hover_color="#589ac4", image=self.home_image)
         self.settings_button = customtkinter.CTkButton(master=self, text="", corner_radius=20, height=80, width=80,
                                                        fg_color="transparent", command=self.settings_button_event,
                                                        hover_color="#589ac4", image=self.settings_image)
@@ -50,6 +47,9 @@ class NavigationBarFrame(customtkinter.CTkFrame):
                                                       hover_color="#589ac4", image=self.friends_image)
         self.row_filler = customtkinter.CTkLabel(master=self, text="\n", width=720, height=100)
         self.home_spacer = customtkinter.CTkLabel(master=self, text="\n", width=150)
+        self.home_button = customtkinter.CTkButton(master=self, text="", corner_radius=65, height=130, width=130,
+                                                       fg_color="transparent", command=self.home_button_event,
+                                                       hover_color="#589ac4", image=self.home_image)
         self.home_bg = customtkinter.CTkLabel(master=self, text="\n", width=150, height=150, corner_radius=75,
                                               fg_color="gray95")
 
@@ -60,6 +60,7 @@ class NavigationBarFrame(customtkinter.CTkFrame):
         self.friends_button.grid(row=0, column=2, padx=10, pady=10)
         self.row_filler.grid(row=1, column=0, columnspan=8)
         self.home_spacer.grid(row=0, column=3, columnspan=2)
+        self.home_button.place(anchor="center", x=360, y=1180)
         self.home_bg.place(anchor="center", x=360)
 
 
@@ -190,7 +191,7 @@ class BeFriend(customtkinter.CTk):
         self.navigationBar.place(x=0, y=1180)
         self.logo_text.place(anchor="nw", y=20, x=40)
         self.logo_button.place(anchor="nw", y=20, x=600)
-        NavigationBarFrame.home_button.place(anchor="center",x=360,y=1180)
+        #self.navigationBar.home_button.place(anchor="center",x=360,y=1180)
 
     # widget methods
     def CLI_callback(self):
