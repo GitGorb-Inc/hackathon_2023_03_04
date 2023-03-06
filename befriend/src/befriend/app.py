@@ -170,7 +170,7 @@ class MessagesFrame(customtkinter.CTkScrollableFrame):
         self.label.grid(row=0, column=0, padx=20)
 
 
-class AchievementsFrame(customtkinter.CTkScrollableFrame):
+class AchievementsFrame(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
@@ -225,9 +225,36 @@ class AchievementsFrame(customtkinter.CTkScrollableFrame):
         # Creating something out of nothing.
         # Pointless. Impossible.
 
-        self.label = customtkinter.CTkLabel(self, text="Achievements")
+        self.title = customtkinter.CTkLabel(master=self, text="Pending", font=("roboto",50))
+        self.achieve1 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto",50), corner_radius=12, height=150, width=680,
+                                                  fg_color="#1bb55c", hover=False)
+        self.achieve2 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto",50), corner_radius=12, height=150, width=680,
+                                                  fg_color="#1bb55c", hover=False)
+        self.achieve3 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto",50), corner_radius=12, height=150,
+                                                width=680, fg_color="#1bb55c", hover=False)
 
-        self.label.grid(row=0, column=0, sticky="nsew")
+        self.title2 = customtkinter.CTkLabel(master=self, text="Completed", font=("roboto",50))
+
+        self.achieve4 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto", 50), corner_radius=12,
+                                                height=150,
+                                                width=680, fg_color="#1bb55c", hover=False)
+
+        self.achieve5 = customtkinter.CTkButton(master=self, text="Achievement1", font=("roboto", 50), corner_radius=12,
+                                                height=150,
+                                                width=680, fg_color="#1bb55c", hover=False)
+
+
+        #INSIDE THE BU'ONS
+        #PROGRESS BAR
+        # IMAGE ON THE LEFT
+
+        #gejo metria, i guess?
+        self.title.grid(row=0)
+        self.achieve1.grid(row=1, pady=15)
+        self.achieve2.grid(row=2, pady=15)
+        self.achieve3.grid(row=3, pady=15)
+        self.title2.grid(row=4, pady=30)
+        self.achieve4.grid(row=5, pady=15)
 
 
 class FriendsFrame(customtkinter.CTkScrollableFrame):
